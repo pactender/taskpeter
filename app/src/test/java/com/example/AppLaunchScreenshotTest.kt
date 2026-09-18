@@ -2,6 +2,7 @@ package com.example
 
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import com.github.takahirom.roborazzi.captureRoboImage
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -37,7 +38,7 @@ class AppLaunchScreenshotTest {
 
     decor.captureRoboImage(filePath = "build/outputs/roborazzi/app-launch.png")
 
-    check(decor.childCount > 0) { "BLANK SCREEN: window rendered no content" }
+    check((decor as android.view.ViewGroup).childCount > 0) { "BLANK SCREEN: window rendered no content" }
     val png = File("build/outputs/roborazzi/app-launch.png")
     check(png.exists() && png.length() > 10_000) {
       "BLANK SCREEN: screenshot suspiciously small (${png.length()} bytes)"
