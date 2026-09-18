@@ -1,0 +1,51 @@
+Categories:
+  - Development
+  - Productivity
+License: Apache-2.0
+AuthorName: Goldman Rogers
+AuthorEmail: pactender@users.noreply.github.com
+SourceCode: https://github.com/pactender/taskpeter
+IssueTracker: https://github.com/pactender/taskpeter/issues
+Changelog: https://github.com/pactender/taskpeter/releases
+Donate: https://github.com/sponsors/pactender
+
+AutoName: TaskPeter
+Name: TaskPeter
+Summary: Developer task tracker & Git sprint studio
+Description: |-
+  TaskPeter is a native, offline-first task tracker built for developers.
+
+  Features include GitHub issue and pull request synchronization, focus sprint
+  timers with binaural sound synthesis, an optional Gemini-powered AI assistant,
+  interactive velocity analytics, and markdown standup exports.
+
+  * Track tasks through TODO, In Progress, Review, and Done workflows with
+    priorities, estimates, deadlines and tags.
+  * Sync repositories, issues and pull requests from GitHub (optional).
+  * Run focus sprints (Pomodoro, deep work, flow state) with synthesized
+    focus audio and streak tracking.
+  * Export workspaces as sanitized JSON or markdown standup summaries.
+
+  The core app works fully offline with a local Room database. GitHub sync,
+  cloud backup and the AI assistant are optional features that require
+  network access and user-configured accounts or API keys.
+
+RepoType: git
+Repo: https://github.com/pactender/taskpeter.git
+Binaries: https://github.com/pactender/taskpeter/releases
+
+Builds:
+  - versionName: 1.0.0
+    versionCode: 1
+    commit: v1.0.0
+    subdir: app
+    gradle:
+      - yes
+
+AntiFeatures:
+  - NonFreeNet
+
+AutoUpdateMode: Version v%v
+UpdateCheckMode: Tags
+CurrentVersion: 1.0.0
+CurrentVersionCode: 1
