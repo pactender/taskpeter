@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Outer Focus / Commit Ring -->
+    <path
+        android:pathData="M54,26 C69.46,26 82,38.54 82,54 C82,69.46 69.46,82 54,82 C38.54,82 26,69.46 26,54"
+        android:strokeColor="#38BDF8"
+        android:strokeWidth="4"
+        android:strokeLineCap="round" />
+    <!-- Terminal Prompt & Checkmark combined: > + Check -->
+    <!-- Prompt chevron '>' -->
+    <path
+        android:pathData="M37,42 L48,52 L37,62"
+        android:strokeColor="#10B981"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <!-- Completed task checkmark '✓' -->
+    <path
+        android:pathData="M52,54 L60,62 L73,46"
+        android:strokeColor="#38BDF8"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <!-- Commit node dot -->
+    <path
+        android:pathData="M54,26m-3.5,0a3.5,3.5 0 1,0 7,0a3.5,3.5 0 1,0 -7,0"
+        android:fillColor="#F59E0B" />
+</vector>
