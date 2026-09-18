@@ -61,6 +61,9 @@ android {
   tasks.matching { it.name == "assembleRelease" }.configureEach {
     dependsOn("testDebugUnitTest")
   }
+  tasks.withType<Test>().configureEach {
+    systemProperty("roborazzi.test.record", "true")
+  }
   dependenciesInfo {
     includeInApk = false
     includeInBundle = true
