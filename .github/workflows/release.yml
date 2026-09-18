@@ -1,0 +1,65 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.3.1'
+
+      - name: Decode release keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > "${{ github.workspace }}/taskpeter-release.p12"
+          echo "KEYSTORE_PATH=${{ github.workspace }}/taskpeter-release.p12" >> "$GITHUB_ENV"
+
+      - name: Build release APK and bundle
+        env:
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          gradle :app:assembleRelease :app:bundleRelease --no-daemon --stacktrace
+
+      - name: Rename artifacts
+        run: |
+          mkdir -p release
+          cp app/build/outputs/apk/release/app-release.apk "release/TaskPeter-${GITHUB_REF_NAME}.apk"
+          cp app/build/outputs/bundle/release/app-release.aab "release/TaskPeter-${GITHUB_REF_NAME}.aab"
+          ls -la release/
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: TaskPeter ${{ github.ref_name }}
+          body: |
+            ## TaskPeter ${{ github.ref_name }}
+
+            Developer task tracker & Git sprint studio.
+
+            ### Install
+            - **APK** (`TaskPeter-${{ github.ref_name }}.apk`): download and install directly, or add this repo as an F-Droid source (see README).
+            - **AAB** (`TaskPeter-${{ github.ref_name }}.aab`): for Play Store upload.
+
+            Signed release build. Verify the certificate SHA-256 fingerprint against the one published in the README before installing.
+          files: |
+            release/TaskPeter-*.apk
+            release/TaskPeter-*.aab
