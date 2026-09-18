@@ -19,7 +19,7 @@ import android.view.View
  */
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
-@Config(qualifiers = "w1080dp-h2400dp", sdk = [36])
+@Config(qualifiers = "w1080dp-h2400dp", sdk = [35])
 class AppLaunchScreenshotTest {
 
   @get:Rule val composeRule = createAndroidComposeRule<MainActivity>()
