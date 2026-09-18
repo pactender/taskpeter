@@ -1,0 +1,13 @@
+TaskPeter is a native, offline-first productivity powerhouse and task management studio engineered specifically for software developers.
+
+Key Features:
+- Multi-status developer task management (TODO, IN PROGRESS, REVIEW, DONE).
+- Quick command palette with terminal-style shortcuts (:add, :prio, :cat, :repo).
+- Git commit attribution: attach commit SHAs, branch names, and messages.
+- Authentic GitHub synchronization with RFC 8628 OAuth device flow.
+- Repositories turn into clickable category filter chips.
+- Peter AI Developer Copilot powered by Gemini with offline heuristics fallback.
+- Focus sprint timer with native binaural sound synthesis (Alpha 10Hz, Deep Work Drone).
+- 28-day GitHub contribution heatmap, weekly velocity charts, and 14-day calendar agenda.
+- 100% offline functionality backed by Room SQLite, with optional Firebase cloud sync.
+- Instant standup markdown generator and sanitized JSON backup/export.
