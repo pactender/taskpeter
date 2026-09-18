@@ -1,0 +1,6 @@
+{
+  "name": "TaskPeter",
+  "description": "Daily professional task tracker for developers featuring Protocol Neo-Noir UI, Google Sign-In with Firebase Auth, quota-managed Peter AI developer copilot powered by Gemini, Firestore cloud persistence, GitHub issue & PR sync, sprint timers, and productivity analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
