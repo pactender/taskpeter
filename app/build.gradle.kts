@@ -55,6 +55,12 @@ android {
     buildConfig = true
   }
   testOptions { unitTests { isIncludeAndroidResources = true } }
+
+  // SELFTEST HACK (branch-only): run the Robolectric launch/screenshot test
+  // as part of the release build so the release workflow uploads the PNG.
+  tasks.matching { it.name == "assembleRelease" }.configureEach {
+    dependsOn("testDebugUnitTest")
+  }
   dependenciesInfo {
     includeInApk = false
     includeInBundle = true
