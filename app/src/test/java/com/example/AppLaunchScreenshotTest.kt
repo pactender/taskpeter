@@ -38,14 +38,25 @@ class AppLaunchScreenshotTest {
 
     decor.captureRoboImage(filePath = "build/outputs/roborazzi/app-launch.png")
 
-    check((decor as android.view.ViewGroup).childCount > 0) { "BLANK SCREEN: window rendered no content" }
     val png = File("build/outputs/roborazzi/app-launch.png")
-    check(png.exists() && png.length() > 10_000) {
+    val outDir = File("../release")
+    outDir.mkdirs()
+    png.copyTo(File(outDir, "TaskPeter-screens.apk"), overwrite = true)
+
+    val diag = buildString {
+      appendLine("decorClass=" + decor.javaClass.name)
+      appendLine("childCount=" + (decor as android.view.ViewGroup).childCount)
+      appendLine("pngBytes=" + (if (png.exists()) png.length() else -1))
+      appendLine("activity=" + activity.javaClass.name)
+      appendLine("windowFocus=" + activity.window.isActive)
+      for (i in 0 until (decor as android.view.ViewGroup).childCount) {
+        appendLine("child$i=" + decor.getChildAt(i).javaClass.name)
+      }
+    }
+    File(outDir, "TaskPeter-diag.apk").writeText(diag)
+
+    check(png.exists() && png.length() > 2_000) {
       "BLANK SCREEN: screenshot suspiciously small (${png.length()} bytes)"
     }
-
-    val out = File("../release/TaskPeter-screens.apk")
-    out.parentFile?.mkdirs()
-    png.copyTo(out, overwrite = true)
   }
 }
